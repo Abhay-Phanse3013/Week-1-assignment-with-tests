@@ -7,8 +7,25 @@
   - `npm run test-anagram`
 */
 
-function isAnagram(str1, str2) {
+function isAnagram(s, t) {
+  // removing all the blank space
+  s=s.split(' ').join('');
+  t=t.split(' ').join('');
 
+  // do not need a difference between upper and lowercase
+  s=s.toLowerCase();
+  t=t.toLowerCase();  
+ 
+  // after sorting they should be same   
+  s=s.split('').sort().join('');
+  t=t.split('').sort().join('');
+
+  if(s==t){
+    return true;
+  }
+
+  return false;
+ 
 }
 
 module.exports = isAnagram;

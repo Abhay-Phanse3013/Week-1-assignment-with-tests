@@ -9,7 +9,32 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+
+  var sz = transactions.length;
+  var uniqueList = [];
+  var list = [];
+  for(var i=0; i<sz; i++) {
+    var object = transactions[i];
+
+    if(uniqueList.includes(object.category)==false){
+        // not found
+        uniqueList.push(object.category);
+        list.push({category: object.category, totalSpent: object.price});
+    }
+    else {
+      // found
+      var foundObject = list.find(obj => obj.category === object.category);
+
+      foundObject.totalSpent += object.price;
+    }
+  }
+
+  return list;
+   
+
 }
+
+
+
 
 module.exports = calculateTotalSpentByCategory;
